@@ -55,4 +55,4 @@ jobs:
       - name: Deploy to server
         run: |
           TARGET="${{ secrets.USERNAME }}@${{ secrets.HOST }}:/www/wwwroot/nani-kiru.minjer.top"
-          rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no" ./dist/ "$TARGET/"
+          rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no" ./ "$TARGET/"

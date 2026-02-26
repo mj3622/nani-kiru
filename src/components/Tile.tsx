@@ -1,5 +1,7 @@
 import type { AtlasMap, TileCode } from "../lib/tileAtlas";
 
+const BASE = (import.meta.env.BASE_URL ?? "/").replace(/\/?$/, "/");
+
 type Props = {
   code: TileCode;
   atlas: AtlasMap;
@@ -26,7 +28,7 @@ export default function Tile({ code, atlas, scale = 0.7 }: Props) {
       style={{
         width: `${rect.w * scale}px`,
         height: `${rect.h * scale}px`,
-        backgroundImage: `url('/assets/tiles/${source}')`,
+        backgroundImage: `url('${BASE}assets/tiles/${source}')`,
         backgroundPosition: bgPosition,
         backgroundSize: bgSize
       }}

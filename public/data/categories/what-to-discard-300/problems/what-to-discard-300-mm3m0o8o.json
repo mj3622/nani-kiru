@@ -1,0 +1,38 @@
+{
+  "id": "what-to-discard-300-mm3m0o8o",
+  "category": "「何切る」300選",
+  "category_id": "what-to-discard-300",
+  "category_title": "「何切る」300選",
+  "title": "A032",
+  "round_label": "东1局",
+  "seat_wind": "east",
+  "turn": 7,
+  "dora": [
+    "8p"
+  ],
+  "hand_tiles": [
+    "3m",
+    "4m",
+    "4m",
+    "4m",
+    "5p",
+    "6p",
+    "7p",
+    "8p",
+    "9p",
+    "6s",
+    "7s",
+    "9s",
+    "9s",
+    "9s"
+  ],
+  "answer_discard": "3m",
+  "shanten": 1,
+  "tile_efficiency": {
+    "3m": 33,
+    "5p": 25,
+    "9p": 25,
+    "6s": 25
+  },
+  "reasoning": "这是庄家的手牌，带有 1 张宝牌。本局要以先制立直为目标，优先选择进张面最广的牌型结构来推进手牌。虽说摸进 [8p] 时会需要打掉宝牌，但这种情况发生的概率本身就很低。"
+}

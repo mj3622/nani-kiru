@@ -1,0 +1,39 @@
+{
+  "id": "what-to-discard-300-mm3m0o4f",
+  "category": "「何切る」300選",
+  "category_id": "what-to-discard-300",
+  "category_title": "「何切る」300選",
+  "title": "A026",
+  "round_label": "东1局",
+  "seat_wind": "east",
+  "turn": 6,
+  "dora": [
+    "2s"
+  ],
+  "hand_tiles": [
+    "5m",
+    "5m",
+    "6m",
+    "6p",
+    "7p",
+    "8p",
+    "3s",
+    "4s",
+    "5s",
+    "5s",
+    "6s",
+    "6s",
+    "south",
+    "south"
+  ],
+  "answer_discard": "5m",
+  "shanten": 1,
+  "tile_efficiency": {
+    "5m": 19,
+    "3s": 19,
+    "6s": 19,
+    "5s": 14,
+    "6m": 13
+  },
+  "reasoning": "大家很容易为了能靠自摸 [0m] 听牌，而选择打出 [6s]，但一旦摸进宝牌 [3s]，就会陷入被动。如果选择打出 [5m]，就算摸进宝牌，也可以通过拆掉 [south] 的对子，顺滑地转型为断幺九牌型。"
+}

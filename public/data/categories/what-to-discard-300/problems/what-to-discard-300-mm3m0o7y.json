@@ -1,0 +1,38 @@
+{
+  "id": "what-to-discard-300-mm3m0o7y",
+  "category": "「何切る」300選",
+  "category_id": "what-to-discard-300",
+  "category_title": "「何切る」300選",
+  "title": "A031",
+  "round_label": "东1局",
+  "seat_wind": "west",
+  "turn": 5,
+  "dora": [
+    "2m"
+  ],
+  "hand_tiles": [
+    "2m",
+    "3m",
+    "5m",
+    "5m",
+    "3p",
+    "3p",
+    "4p",
+    "3s",
+    "4s",
+    "4s",
+    "5s",
+    "6s",
+    "8s",
+    "9s"
+  ],
+  "answer_discard": "9s",
+  "shanten": 1,
+  "tile_efficiency": {
+    "9s": 31,
+    "2m": 27,
+    "3p": 27,
+    "8s": 27
+  },
+  "reasoning": "索子部分形成了可进 [2s] - [5s]、[7s] 的嵌张 - 两面复合型搭子，即便手牌中原本的 [9s] 被打掉，后续摸进 [7s] 也依然能发挥作用。后续手牌可以以三色同顺为核心目标推进。"
+}

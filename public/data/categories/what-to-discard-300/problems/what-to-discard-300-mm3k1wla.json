@@ -1,0 +1,38 @@
+{
+  "id": "what-to-discard-300-mm3k1wla",
+  "category": "「何切る」300選",
+  "category_id": "what-to-discard-300",
+  "category_title": "「何切る」300選",
+  "title": "A004",
+  "round_label": "东1局",
+  "seat_wind": "east",
+  "turn": 6,
+  "dora": [
+    "south"
+  ],
+  "hand_tiles": [
+    "1m",
+    "2m",
+    "3m",
+    "8m",
+    "8m",
+    "4p",
+    "5p",
+    "5p",
+    "6p",
+    "7p",
+    "9p",
+    "5s",
+    "5s",
+    "9s"
+  ],
+  "answer_discard": "5s",
+  "shanten": 1,
+  "tile_efficiency": {
+    "9p": 19,
+    "5s": 19,
+    "5p": 16,
+    "6s": 15
+  },
+  "reasoning": "筒子部分为听 [3p]-[6p]、[8p] 的两面嵌张复合型听牌。"
+}

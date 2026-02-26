@@ -1,0 +1,36 @@
+{
+  "id": "what-to-discard-300-mm3m0o0s",
+  "category": "「何切る」300選",
+  "category_id": "what-to-discard-300",
+  "category_title": "「何切る」300選",
+  "title": "A021",
+  "round_label": "东1局",
+  "seat_wind": "east",
+  "turn": 9,
+  "dora": [
+    "north"
+  ],
+  "hand_tiles": [
+    "3m",
+    "4m",
+    "4m",
+    "3p",
+    "3p",
+    "4p",
+    "4p",
+    "5p",
+    "6p",
+    "7p",
+    "5s",
+    "5s",
+    "east",
+    "east"
+  ],
+  "answer_discard": "7p",
+  "shanten": 1,
+  "tile_efficiency": {
+    "3m": 9,
+    "7p": 9
+  },
+  "reasoning": "只要能碰出 [east] 的刻子，本就没有任何问题，但对局已经来到第 9 巡。正因为这是宝牌，所以也想为碰不出来的情况做好后手准备。此处选择打出 [7p]，让手牌同时保留标准面子手和七对子两条发展路线。虽然会觉得舍弃筒子的三面听进张有些可惜，但实际损失的有效进张只有 [8p] 这一种。目前处于七对子一向听的状态，一旦有人打出 [east]，就立刻碰牌。"
+}

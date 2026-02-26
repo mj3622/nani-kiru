@@ -1,0 +1,39 @@
+{
+  "id": "what-to-discard-300-mm3k1wpy",
+  "category": "「何切る」300選",
+  "category_id": "what-to-discard-300",
+  "category_title": "「何切る」300選",
+  "title": "A011",
+  "round_label": "东1局",
+  "seat_wind": "west",
+  "turn": 7,
+  "dora": [
+    "8s"
+  ],
+  "hand_tiles": [
+    "1m",
+    "2m",
+    "3m",
+    "4m",
+    "5p",
+    "6p",
+    "7p",
+    "8p",
+    "1s",
+    "2s",
+    "2s",
+    "2s",
+    "3s",
+    "3s"
+  ],
+  "answer_discard": "1m",
+  "shanten": 1,
+  "tile_efficiency": {
+    "1s": 46,
+    "3s": 45,
+    "1m": 38,
+    "8p": 34,
+    "2s": 19
+  },
+  "reasoning": "单看有效进张的枚数，打出 [1s] 的进张面最广，但如果结合最终牌型和打点（平和、一杯口）综合判断的话，打出 [1m] 的综合期望值是最高的。[1s][2s][2s][2s][3s][3s]这个牌型，是既能发展成「1 组面子 + 雀头」，也能做成一杯口的双向发展好型。"
+}

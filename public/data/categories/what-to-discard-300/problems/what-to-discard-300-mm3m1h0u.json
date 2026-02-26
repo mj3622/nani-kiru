@@ -1,0 +1,35 @@
+{
+  "id": "what-to-discard-300-mm3m1h0u",
+  "category": "「何切る」300選",
+  "category_id": "what-to-discard-300",
+  "category_title": "「何切る」300選",
+  "title": "A029",
+  "round_label": "东1局",
+  "seat_wind": "west",
+  "turn": 6,
+  "dora": [
+    "1m"
+  ],
+  "hand_tiles": [
+    "6m",
+    "6m",
+    "6m",
+    "7m",
+    "8m",
+    "9m",
+    "3p",
+    "4p",
+    "3s",
+    "0s",
+    "7s",
+    "7s",
+    "red",
+    "red"
+  ],
+  "answer_discard": "3s",
+  "shanten": 1,
+  "tile_efficiency": {
+    "3s": 1
+  },
+  "reasoning": "比起打出 [7s] 来用掉赤宝牌，应当优先保留 [red] 的碰牌或暗刻可能性。要是在赤宝牌附带祝仪的规则下，你可能会对这种打法有抵触，但同样是 1 番的打点，这个打法的推进速度完全不同。靠摸进筒子听牌时，基本选择是打出 [0s]，宣告双碰立直。"
+}

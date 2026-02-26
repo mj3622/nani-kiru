@@ -1,0 +1,37 @@
+{
+  "id": "what-to-discard-300-mm30fein",
+  "category": "「何切る」300選",
+  "category_id": "what-to-discard-300",
+  "category_title": "「何切る」300選",
+  "title": "A002",
+  "round_label": "东1局",
+  "seat_wind": "west",
+  "turn": 7,
+  "dora": [
+    "south"
+  ],
+  "hand_tiles": [
+    "6p",
+    "6p",
+    "7p",
+    "7p",
+    "8p",
+    "1s",
+    "1s",
+    "2s",
+    "2s",
+    "3s",
+    "4s",
+    "5s",
+    "red",
+    "red"
+  ],
+  "answer_discard": "5s",
+  "shanten": 1,
+  "tile_efficiency": {
+    "1s": 18,
+    "2s": 18,
+    "5s": 14
+  },
+  "reasoning": "为了保留最高形态的二杯口而如此构型。\n因为还有七对子的可能，所以也要确认一下，与切[8p]相比进张只差1张。"
+}

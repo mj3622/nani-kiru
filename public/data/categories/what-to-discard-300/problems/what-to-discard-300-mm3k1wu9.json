@@ -1,0 +1,39 @@
+{
+  "id": "what-to-discard-300-mm3k1wu9",
+  "category": "「何切る」300選",
+  "category_id": "what-to-discard-300",
+  "category_title": "「何切る」300選",
+  "title": "A017",
+  "round_label": "东1局",
+  "seat_wind": "west",
+  "turn": 7,
+  "dora": [
+    "9p"
+  ],
+  "hand_tiles": [
+    "1m",
+    "2m",
+    "3m",
+    "5m",
+    "7m",
+    "8m",
+    "8m",
+    "9m",
+    "0p",
+    "6p",
+    "7p",
+    "5s",
+    "5s",
+    "6s"
+  ],
+  "answer_discard": "8m",
+  "shanten": 1,
+  "tile_efficiency": {
+    "8m": 34,
+    "5m": 29,
+    "6s": 24,
+    "5s": 17,
+    "9m": 16
+  },
+  "reasoning": "这是一手在一气通贯和三色同顺之间做选择的手牌。选择打出 [8m] 的话，自摸 [4m]、[6m] 就能做成平和一气通贯，自摸 [5m]、[5s]、[7s] 也能做成带 1 张赤宝牌的平和，完全没有无效进张。这个选择和打 [9m]、打 [5s] 相比，进张效率有着天差地别的差距。"
+}

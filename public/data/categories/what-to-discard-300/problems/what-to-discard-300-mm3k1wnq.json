@@ -1,0 +1,38 @@
+{
+  "id": "what-to-discard-300-mm3k1wnq",
+  "category": "「何切る」300選",
+  "category_id": "what-to-discard-300",
+  "category_title": "「何切る」300選",
+  "title": "A008",
+  "round_label": "东1局",
+  "seat_wind": "east",
+  "turn": 6,
+  "dora": [
+    "9s"
+  ],
+  "hand_tiles": [
+    "1m",
+    "3m",
+    "5m",
+    "1p",
+    "1p",
+    "2p",
+    "4p",
+    "0p",
+    "6p",
+    "6p",
+    "7p",
+    "7s",
+    "8s",
+    "9s"
+  ],
+  "answer_discard": "2p",
+  "shanten": 1,
+  "tile_efficiency": {
+    "1m": 15,
+    "5m": 13,
+    "2p": 15,
+    "6p": 12
+  },
+  "reasoning": "从这里选择打出 [5m]，通过提前打掉这本该留到听牌阶段的 [5m]，降低别家对杠 [2m] 的警戒心，这种「诱骗打法」也可根据个人风格选用。但麻将本质是靠摸牌推进的游戏，优先把手牌构筑成更容易形成两面听的形态，才是最稳妥的正道。这个牌型原本还有机会做平和，提前切牌的操作在打点层面也会变得不利。"
+}

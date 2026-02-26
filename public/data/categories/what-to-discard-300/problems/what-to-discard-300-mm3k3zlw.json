@@ -1,0 +1,38 @@
+{
+  "id": "what-to-discard-300-mm3k3zlw",
+  "category": "「何切る」300選",
+  "category_id": "what-to-discard-300",
+  "category_title": "「何切る」300選",
+  "title": "A005",
+  "round_label": "东1局",
+  "seat_wind": "east",
+  "turn": 6,
+  "dora": [
+    "south"
+  ],
+  "hand_tiles": [
+    "2m",
+    "3m",
+    "4m",
+    "8m",
+    "8m",
+    "4p",
+    "5p",
+    "5p",
+    "6p",
+    "7p",
+    "9p",
+    "5s",
+    "5s",
+    "6s"
+  ],
+  "answer_discard": "9p",
+  "shanten": 1,
+  "tile_efficiency": {
+    "9p": 19,
+    "5s": 19,
+    "5p": 16,
+    "6s": 15
+  },
+  "reasoning": "筒子部分是听 [3p]-[6p]、[8p] 的两面嵌张复合型听牌，但由于断幺九的打点比平和更高，因此要优先确定断幺九的役，而非强求平和。该牌型也可应对 [5s] 的碰等副露操作。"
+}

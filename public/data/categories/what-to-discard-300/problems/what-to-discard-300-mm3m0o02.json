@@ -1,0 +1,39 @@
+{
+  "id": "what-to-discard-300-mm3m0o02",
+  "category": "「何切る」300選",
+  "category_id": "what-to-discard-300",
+  "category_title": "「何切る」300選",
+  "title": "A020",
+  "round_label": "东1局",
+  "seat_wind": "west",
+  "turn": 7,
+  "dora": [
+    "3s"
+  ],
+  "hand_tiles": [
+    "4m",
+    "5m",
+    "6p",
+    "7p",
+    "8p",
+    "9p",
+    "9p",
+    "1s",
+    "1s",
+    "2s",
+    "3s",
+    "4s",
+    "6s",
+    "7s"
+  ],
+  "answer_discard": "9p",
+  "shanten": 1,
+  "tile_efficiency": {
+    "6p": 16,
+    "9p": 16,
+    "1s": 16,
+    "4s": 16,
+    "7s": 16
+  },
+  "reasoning": "带有宝牌的连续形牌型，基本原则是用筋牌来做雀头，后续摸进宝牌时，还可以和 [1s] 进行替换调整。或许也有人觉得，把 [1s] 作为浮牌直接打掉就好，但一旦摸到像 [5m] 这种能让手牌进入完全一向听的牌，或是先摸到安全牌之后再摸进宝牌，就会陷入被动。"
+}

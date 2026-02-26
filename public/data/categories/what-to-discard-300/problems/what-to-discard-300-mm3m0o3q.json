@@ -1,0 +1,38 @@
+{
+  "id": "what-to-discard-300-mm3m0o3q",
+  "category": "「何切る」300選",
+  "category_id": "what-to-discard-300",
+  "category_title": "「何切る」300選",
+  "title": "A025",
+  "round_label": "东1局",
+  "seat_wind": "north",
+  "turn": 7,
+  "dora": [
+    "2p"
+  ],
+  "hand_tiles": [
+    "2m",
+    "3m",
+    "4m",
+    "1p",
+    "1p",
+    "3p",
+    "3p",
+    "3p",
+    "4p",
+    "4p",
+    "5p",
+    "7s",
+    "7s",
+    "8s"
+  ],
+  "answer_discard": "7s",
+  "shanten": 1,
+  "tile_efficiency": {
+    "7s": 24,
+    "4p": 21,
+    "3p": 19,
+    "8s": 18
+  },
+  "reasoning": "要完整保留筒子的复合型牌型，构筑成进张更广的形态，同时把索子部分固定为两面搭子。就算摸进 [2p] - [5p] 时需要打掉宝牌，当前手牌的打点也已经完全足够。选择打出 [1p] 的人，属于典型的 “断幺病”。"
+}

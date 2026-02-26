@@ -1,0 +1,37 @@
+{
+  "id": "what-to-discard-300-mm3k1ws3",
+  "category": "「何切る」300選",
+  "category_id": "what-to-discard-300",
+  "category_title": "「何切る」300選",
+  "title": "A014",
+  "round_label": "东1局",
+  "seat_wind": "east",
+  "turn": 7,
+  "dora": [
+    "8m"
+  ],
+  "hand_tiles": [
+    "2m",
+    "3m",
+    "4m",
+    "8m",
+    "9m",
+    "6p",
+    "6p",
+    "6p",
+    "7p",
+    "3s",
+    "4s",
+    "7s",
+    "8s",
+    "9s"
+  ],
+  "answer_discard": "8m",
+  "shanten": 1,
+  "tile_efficiency": {
+    "7p": 24,
+    "8m": 22,
+    "9m": 22
+  },
+  "reasoning": "单看有效进张枚数，打出 [7p] 的进张量是最高的，但就算靠索子的进张听牌，最终也只能形成边张听牌。这里应当选择打出 [8m]，目标是通过自摸宝牌 [9m]，[5p]-[8p]、[7p]、[2s]-[5s] 的进张，形成好型听牌。把宝牌作为浮牌一直留在手里存在一定风险，但一旦它能形成雀头，回报会非常可观。"
+}

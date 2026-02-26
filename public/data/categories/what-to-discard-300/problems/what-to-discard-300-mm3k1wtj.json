@@ -1,0 +1,39 @@
+{
+  "id": "what-to-discard-300-mm3k1wtj",
+  "category": "「何切る」300選",
+  "category_id": "what-to-discard-300",
+  "category_title": "「何切る」300選",
+  "title": "A016",
+  "round_label": "东1局",
+  "seat_wind": "east",
+  "turn": 7,
+  "dora": [
+    "2p"
+  ],
+  "hand_tiles": [
+    "1m",
+    "3m",
+    "4m",
+    "5m",
+    "5m",
+    "6m",
+    "6p",
+    "7p",
+    "3s",
+    "0s",
+    "7s",
+    "8s",
+    "8s",
+    "9s"
+  ],
+  "answer_discard": "1m",
+  "shanten": 2,
+  "tile_efficiency": {
+    "1m": 49,
+    "8s": 46,
+    "5m": 43,
+    "3s": 33,
+    "9s": 27
+  },
+  "reasoning": "摸进 [4s] 或 [6s]，即可转型为断平（三色同顺）牌型。就算摸到了非有效进张的 [2m]，会错失完成 1 组面子的机会，但即便如此手牌也能获得小幅推进。"
+}

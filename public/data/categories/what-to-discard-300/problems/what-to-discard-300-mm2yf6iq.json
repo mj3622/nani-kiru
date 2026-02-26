@@ -1,0 +1,37 @@
+{
+  "id": "what-to-discard-300-mm2yf6iq",
+  "category": "「何切る」300選",
+  "category_id": "what-to-discard-300",
+  "category_title": "「何切る」300選",
+  "title": "A001",
+  "round_label": "东1局",
+  "seat_wind": "west",
+  "turn": 7,
+  "dora": [
+    "south"
+  ],
+  "hand_tiles": [
+    "0p",
+    "6p",
+    "7p",
+    "7p",
+    "8p",
+    "1s",
+    "1s",
+    "2s",
+    "2s",
+    "3s",
+    "4s",
+    "5s",
+    "red",
+    "red"
+  ],
+  "answer_discard": "2s",
+  "shanten": 1,
+  "tile_efficiency": {
+    "1s": 18,
+    "2s": 18,
+    "5s": 14
+  },
+  "reasoning": "考虑到碰[red]听牌以及对最终听牌形态的重视，我们应该选择进张面最广的形态。虽然[1s]和[2s]的进张数相同，但当形成双碰听牌时，在和牌的容易程度以及涨符（符数进位）的可能性上会有所区别。还要确认一点：如下方所示，如果是和[6p]的情况，可以将其视作坎张听牌来处理，因此会加算2符。\n\n [0p][6p][7p][7p][8p][1s][1s][3s][4s][5s][red][red][red]  [6p]"
+}

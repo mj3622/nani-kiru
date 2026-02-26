@@ -1,0 +1,37 @@
+{
+  "id": "what-to-discard-300-mm3k1wmz",
+  "category": "「何切る」300選",
+  "category_id": "what-to-discard-300",
+  "category_title": "「何切る」300選",
+  "title": "A007",
+  "round_label": "东1局",
+  "seat_wind": "east",
+  "turn": 6,
+  "dora": [
+    "south"
+  ],
+  "hand_tiles": [
+    "4m",
+    "4m",
+    "0m",
+    "6m",
+    "1p",
+    "3p",
+    "4p",
+    "5p",
+    "5p",
+    "6p",
+    "3s",
+    "4s",
+    "7s",
+    "8s"
+  ],
+  "answer_discard": "1p",
+  "shanten": 1,
+  "tile_efficiency": {
+    "1p": 53,
+    "4m": 50,
+    "5p": 47
+  },
+  "reasoning": "这是一副好型两向听的手牌，但缺少雀头，要将手牌构筑成以做雀头为最优先的形态。就算摸到了原本非有效进张的 [2p]，也能把 [5p] 做成雀头。"
+}

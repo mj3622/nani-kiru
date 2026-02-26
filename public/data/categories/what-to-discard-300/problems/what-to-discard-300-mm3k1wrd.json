@@ -1,0 +1,40 @@
+{
+  "id": "what-to-discard-300-mm3k1wrd",
+  "category": "「何切る」300選",
+  "category_id": "what-to-discard-300",
+  "category_title": "「何切る」300選",
+  "title": "A013",
+  "round_label": "东1局",
+  "seat_wind": "west",
+  "turn": 4,
+  "dora": [
+    "south"
+  ],
+  "hand_tiles": [
+    "6m",
+    "7m",
+    "8m",
+    "1p",
+    "2p",
+    "3p",
+    "3p",
+    "0p",
+    "6p",
+    "1s",
+    "2s",
+    "3s",
+    "7s",
+    "8s"
+  ],
+  "answer_discard": "2p",
+  "shanten": 1,
+  "tile_efficiency": {
+    "3p": 28,
+    "6p": 23,
+    "1p": 16,
+    "2p": 16,
+    "7s": 16,
+    "8s": 16
+  },
+  "reasoning": "打出 [3p] 固定面子的进张面更广，但自摸 [6p] 时会出现赤牌被浪费的情况。这种两组独立两面搭子构成的一向听手牌，是否要固定雀头虽需要结合对局状况判断，但像本次这种存在赤牌损失风险的局面，固定雀头是更有利的选择"
+}

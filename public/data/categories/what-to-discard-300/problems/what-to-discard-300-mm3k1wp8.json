@@ -1,0 +1,37 @@
+{
+  "id": "what-to-discard-300-mm3k1wp8",
+  "category": "「何切る」300選",
+  "category_id": "what-to-discard-300",
+  "category_title": "「何切る」300選",
+  "title": "A010",
+  "round_label": "东1局",
+  "seat_wind": "east",
+  "turn": 7,
+  "dora": [
+    "1m"
+  ],
+  "hand_tiles": [
+    "1m",
+    "0m",
+    "6m",
+    "9m",
+    "9m",
+    "1p",
+    "1p",
+    "3p",
+    "3p",
+    "3s",
+    "4s",
+    "5s",
+    "6s",
+    "7s"
+  ],
+  "answer_discard": "3p",
+  "shanten": 1,
+  "tile_efficiency": {
+    "1p": 19,
+    "3p": 19,
+    "9m": 15
+  },
+  "reasoning": "要将筒子部分构筑为 3 枚的形态。打出 [1p] 的情况下，自摸 [4p] 就能进入完全一向听，但索子的面子有更高的概率会先成型。以最终牌型为优先的话，打出 [3p] 是正确打法。"
+}

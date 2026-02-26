@@ -1,0 +1,35 @@
+{
+  "id": "what-to-discard-300-mm3k1wst",
+  "category": "「何切る」300選",
+  "category_id": "what-to-discard-300",
+  "category_title": "「何切る」300選",
+  "title": "A015",
+  "round_label": "东1局",
+  "seat_wind": "east",
+  "turn": 6,
+  "dora": [
+    "6m"
+  ],
+  "hand_tiles": [
+    "2m",
+    "2m",
+    "0m",
+    "7m",
+    "3p",
+    "4p",
+    "6p",
+    "6p",
+    "2s",
+    "2s",
+    "5s",
+    "6s",
+    "7s",
+    "8s"
+  ],
+  "answer_discard": "8s",
+  "shanten": 1,
+  "tile_efficiency": {
+    "8s": 1
+  },
+  "reasoning": "这是一副面子超载、同时带有 3 个对子的手牌。能直接提升打点的 [0m]、[7m]，杠出的机会很低，因此要以「副露为前提」推进手牌。手牌中容易碰出的对子很多，因此索子部分要固定为 1 组面子，就算四连形有延伸空间，也很容易破坏断幺九的役。打 [5s] 和打 [8s] 的收益差距并不大，但如果考虑到摸进 [4s] 可衔接 567 三色同顺的可能性，打 [8s] 是更优的选择。"
+}

@@ -1,0 +1,39 @@
+{
+  "id": "what-to-discard-300-mm3m0o5u",
+  "category": "「何切る」300選",
+  "category_id": "what-to-discard-300",
+  "category_title": "「何切る」300選",
+  "title": "A028",
+  "round_label": "东1局",
+  "seat_wind": "east",
+  "turn": 7,
+  "dora": [
+    "1p"
+  ],
+  "hand_tiles": [
+    "9m",
+    "9m",
+    "2p",
+    "3p",
+    "4p",
+    "6p",
+    "8p",
+    "3s",
+    "0s",
+    "7s",
+    "7s",
+    "north",
+    "north",
+    "north"
+  ],
+  "answer_discard": "7s",
+  "shanten": 1,
+  "tile_efficiency": {
+    "3s": 12,
+    "7s": 12,
+    "9m": 8,
+    "6p": 8,
+    "8p": 8
+  },
+  "reasoning": "这是一副「以门清为前提」的手牌。选择打出 [7s]，优先固定赤宝牌的价值。因为是庄家，且手牌带有 1 张赤宝牌，所以哪怕最终是愚型听牌，也可以直接宣告立直。"
+}

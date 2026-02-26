@@ -1,0 +1,39 @@
+{
+  "id": "what-to-discard-300-mm3m0o1h",
+  "category": "「何切る」300選",
+  "category_id": "what-to-discard-300",
+  "category_title": "「何切る」300選",
+  "title": "A022",
+  "round_label": "东1局",
+  "seat_wind": "east",
+  "turn": 3,
+  "dora": [
+    "1m"
+  ],
+  "hand_tiles": [
+    "1m",
+    "2m",
+    "3m",
+    "7m",
+    "2p",
+    "2p",
+    "8p",
+    "3s",
+    "3s",
+    "4s",
+    "5s",
+    "7s",
+    "9s",
+    "9s"
+  ],
+  "answer_discard": "8p",
+  "shanten": 2,
+  "tile_efficiency": {
+    "9s": 60,
+    "7s": 58,
+    "3s": 56,
+    "8p": 50,
+    "7m": 46
+  },
+  "reasoning": "面子候选不足。作为浮牌，最弱的[6s]是正确答案。"
+}

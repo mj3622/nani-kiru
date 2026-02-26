@@ -1,0 +1,39 @@
+{
+  "id": "what-to-discard-300-mm31z51s",
+  "category": "「何切る」300選",
+  "category_id": "what-to-discard-300",
+  "category_title": "「何切る」300選",
+  "title": "A003",
+  "round_label": "东1局",
+  "seat_wind": "west",
+  "turn": 7,
+  "dora": [
+    "south"
+  ],
+  "hand_tiles": [
+    "6p",
+    "7p",
+    "7p",
+    "7p",
+    "8p",
+    "1s",
+    "1s",
+    "2s",
+    "2s",
+    "3s",
+    "4s",
+    "5s",
+    "red",
+    "red"
+  ],
+  "answer_discard": "8p",
+  "shanten": 1,
+  "tile_efficiency": {
+    "6p": 13,
+    "7p": 13,
+    "8p": 13,
+    "2s": 12,
+    "5s": 8
+  },
+  "reasoning": "目标是三暗刻。如果追求赤牌进张就切[8p]从外侧切起，如果重视危险度就切[6p]从内侧切起。"
+}

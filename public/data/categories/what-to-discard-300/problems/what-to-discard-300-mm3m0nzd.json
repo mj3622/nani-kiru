@@ -1,0 +1,39 @@
+{
+  "id": "what-to-discard-300-mm3m0nzd",
+  "category": "「何切る」300選",
+  "category_id": "what-to-discard-300",
+  "category_title": "「何切る」300選",
+  "title": "A019",
+  "round_label": "东1局",
+  "seat_wind": "east",
+  "turn": 8,
+  "dora": [
+    "3m"
+  ],
+  "hand_tiles": [
+    "4m",
+    "5m",
+    "5m",
+    "6m",
+    "6m",
+    "6m",
+    "3p",
+    "4p",
+    "4p",
+    "4p",
+    "5p",
+    "6p",
+    "7p",
+    "7p"
+  ],
+  "answer_discard": "7p",
+  "shanten": 1,
+  "tile_efficiency": {
+    "7p": 37,
+    "3p": 35,
+    "5m": 33,
+    "4m": 30,
+    "6m": 24
+  },
+  "reasoning": "这是一个关于牌效率的问题，核心抉择点在于能否保留住筒子的四面听牌结构。不熟悉这类牌型的话，乍一看会觉得难度很高，但只要明白万子部分摸进 [3m] ~ [7m] 就能完成两组面子，同时筒子的 [4p] 和 [7p] 存在筋牌进张重复的问题，就能得出正确答案。"
+}

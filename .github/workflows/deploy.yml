@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy to Server
 
 on:
   push:
@@ -7,11 +7,9 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  group: deploy
   cancel-in-progress: true
 
 jobs:
@@ -32,21 +30,29 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
+          name: dist
           path: dist
 
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.TENCENTCLOUD }}" | tr -d '\r' > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H "${{ secrets.HOST }}" >> ~/.ssh/known_hosts 2>/dev/null || true
+
+      - name: Deploy to server
+        run: |
+          TARGET="${{ secrets.USERNAME }}@${{ secrets.HOST }}:/www/wwwroot/nani-kiru.minjer.top"
+          rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no" ./dist/ "$TARGET/"

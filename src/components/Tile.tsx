@@ -1,3 +1,4 @@
+import { memo } from "react";
 import type { AtlasMap, TileCode } from "../lib/tileAtlas";
 
 const BASE = (import.meta.env.BASE_URL ?? "/").replace(/\/?$/, "/");
@@ -8,7 +9,7 @@ type Props = {
   scale?: number;
 };
 
-export default function Tile({ code, atlas, scale = 0.7 }: Props) {
+function Tile({ code, atlas, scale = 0.7 }: Props) {
   const rect = atlas.tiles[code];
   if (!rect) {
     return <div className="tile-missing">?</div>;
@@ -37,3 +38,5 @@ export default function Tile({ code, atlas, scale = 0.7 }: Props) {
     />
   );
 }
+
+export default memo(Tile);

@@ -1,4 +1,4 @@
-import { type ReactNode, useEffect, useRef, useState } from "react";
+import { type ReactNode, useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
 import Tile from "./components/Tile";
 import TileRow from "./components/TileRow";
 import { loadAtlasMap, type AtlasMap, type TileCode } from "./lib/tileAtlas";
@@ -140,15 +140,26 @@ export default function App() {
   const [showAnalysis, setShowAnalysis] = useState(false);
   const [showOriginalQuestion, setShowOriginalQuestion] = useState(false);
   const activeTitleRef = useRef<HTMLButtonElement | null>(null);
+  const [isPending, startTransition] = useTransition();
+  const problemCacheRef = useRef<Map<string, PracticeProblem>>(new Map());
 
-  const fetchProblemByFile = async (file: string) => {
+  const reasoningContent = useMemo(() => {
+    if (!problem || !atlas) return null;
+    return renderReasoningWithTiles(problem.reasoning, atlas);
+  }, [problem?.id, problem?.reasoning, atlas]);
+
+  const fetchProblemByFile = useCallback(async (file: string): Promise<PracticeProblem> => {
+    const cached = problemCacheRef.current.get(file);
+    if (cached) return cached;
     const res = await fetch(basePath(file));
     if (!res.ok) {
       throw new Error(`题目加载失败: ${res.status}`);
     }
     const row = (await res.json()) as ApiProblem;
-    return mapApiProblem(row);
-  };
+    const problem = mapApiProblem(row);
+    problemCacheRef.current.set(file, problem);
+    return problem;
+  }, []);
 
   const loadTitlesByCategory = async (categoryId: string) => {
     const res = await fetch(basePath(`/data/categories/${categoryId}/titles.json`));
@@ -160,7 +171,7 @@ export default function App() {
     return list;
   };
 
-  const navigateProblem = async (direction: -1 | 1) => {
+  const navigateProblem = useCallback(async (direction: -1 | 1) => {
     setSwitchingProblem(true);
     setProblemError(null);
     try {
@@ -171,17 +182,19 @@ export default function App() {
       const nextIdx = (baseIdx + direction + currentTitles.length) % currentTitles.length;
       const next = currentTitles[nextIdx];
       const nextProblem = await fetchProblemByFile(next.file);
-      setProblem(nextProblem);
-      setSelectedProblemId(next.id);
-      setView("practice");
-      setShowAnalysis(false);
-      setShowOriginalQuestion(false);
+      startTransition(() => {
+        setProblem(nextProblem);
+        setSelectedProblemId(next.id);
+        setView("practice");
+        setShowAnalysis(false);
+        setShowOriginalQuestion(false);
+      });
     } catch (err) {
       setProblemError(err instanceof Error ? err.message : "题目加载失败");
     } finally {
       setSwitchingProblem(false);
     }
-  };
+  }, [selectedCategoryId, selectedProblemId, titlesByCategory, fetchProblemByFile]);
 
   const ensureCategoryTitlesLoaded = async (categoryId: string) => {
     if (titlesByCategory[categoryId]) return titlesByCategory[categoryId];
@@ -202,23 +215,25 @@ export default function App() {
     }
   };
 
-  const selectTitle = async (categoryId: string, item: TitleItem) => {
+  const selectTitle = useCallback(async (categoryId: string, item: TitleItem) => {
     setLoadingProblem(true);
     setProblemError(null);
     try {
-      const row = await fetchProblemByFile(item.file);
-      setSelectedCategoryId(categoryId);
-      setProblem(row);
-      setSelectedProblemId(item.id);
-      setView("practice");
-      setShowAnalysis(false);
-      setShowOriginalQuestion(false);
+      const nextProblem = await fetchProblemByFile(item.file);
+      startTransition(() => {
+        setSelectedCategoryId(categoryId);
+        setProblem(nextProblem);
+        setSelectedProblemId(item.id);
+        setView("practice");
+        setShowAnalysis(false);
+        setShowOriginalQuestion(false);
+      });
     } catch (err) {
       setProblemError(err instanceof Error ? err.message : "题目加载失败");
     } finally {
       setLoadingProblem(false);
     }
-  };
+  }, [fetchProblemByFile]);
 
   const startPractice = async () => {
     const categoryId = selectedCategoryId ?? categories[0]?.id;
@@ -232,8 +247,23 @@ export default function App() {
 
   useEffect(() => {
     if (view !== "practice" || !selectedProblemId) return;
-    activeTitleRef.current?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    const id = requestAnimationFrame(() => {
+      activeTitleRef.current?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    });
+    return () => cancelAnimationFrame(id);
   }, [view, selectedProblemId, selectedCategoryId]);
+
+  useEffect(() => {
+    if (!problem || !selectedCategoryId) return;
+    const list = titlesByCategory[selectedCategoryId] ?? [];
+    if (list.length === 0) return;
+    const idx = list.findIndex((t) => t.id === selectedProblemId);
+    if (idx < 0) return;
+    const prev = list[(idx - 1 + list.length) % list.length];
+    const next = list[(idx + 1) % list.length];
+    if (prev && !problemCacheRef.current.has(prev.file)) fetchProblemByFile(prev.file).catch(() => {});
+    if (next && !problemCacheRef.current.has(next.file)) fetchProblemByFile(next.file).catch(() => {});
+  }, [problem?.id, selectedCategoryId, selectedProblemId, titlesByCategory, fetchProblemByFile]);
 
   useEffect(() => {
     loadAtlasMap().then(setAtlas).catch(console.error);
@@ -403,7 +433,7 @@ export default function App() {
           {view === "practice" && !problem && <div className="home-card">正在加载题目...</div>}
 
           {view === "practice" && problem && (
-            <div className="sheet">
+            <div className={`sheet ${isPending ? "sheet-pending" : ""}`}>
             <div className="sheet-title">
               <span className="title-category">{problem.category}</span>
               <span className="title-sep">&gt;</span>
@@ -497,7 +527,7 @@ export default function App() {
                   </div>
                 </div>
                 <div className="analysis-reason-row">
-                  <div className="reasoning">{renderReasoningWithTiles(problem.reasoning, atlas)}</div>
+                  <div className="reasoning">{reasoningContent}</div>
                 </div>
                 {selectedCategoryId === "what-to-discard-300" && showOriginalQuestion && (
                   <div className="analysis-original">

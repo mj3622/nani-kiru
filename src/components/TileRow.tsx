@@ -1,3 +1,4 @@
+import { memo } from "react";
 import Tile from "./Tile";
 import type { AtlasMap, TileCode } from "../lib/tileAtlas";
 
@@ -8,7 +9,7 @@ type Props = {
   compact?: boolean;
 };
 
-export default function TileRow({ tiles, atlas, scale, compact = false }: Props) {
+function TileRow({ tiles, atlas, scale, compact = false }: Props) {
   return (
     <div className={`tile-row ${compact ? "tile-row-compact" : ""}`.trim()}>
       {tiles.map((tile, idx) => (
@@ -17,3 +18,5 @@ export default function TileRow({ tiles, atlas, scale, compact = false }: Props)
     </div>
   );
 }
+
+export default memo(TileRow);

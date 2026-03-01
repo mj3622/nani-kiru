@@ -2,6 +2,7 @@ import { type ReactNode, useCallback, useEffect, useMemo, useRef, useState, useT
 import Tile from "./components/Tile";
 import TileRow from "./components/TileRow";
 import { loadAtlasMap, type AtlasMap, type TileCode } from "./lib/tileAtlas";
+import { loadProgress, markDone } from "./lib/progress";
 
 type PracticeProblem = {
   id: string;
@@ -139,6 +140,7 @@ export default function App() {
   const [switchingProblem, setSwitchingProblem] = useState(false);
   const [showAnalysis, setShowAnalysis] = useState(false);
   const [showOriginalQuestion, setShowOriginalQuestion] = useState(false);
+  const [doneProblemIds, setDoneProblemIds] = useState<Set<string>>(() => loadProgress());
   const activeTitleRef = useRef<HTMLButtonElement | null>(null);
   const [isPending, startTransition] = useTransition();
   const problemCacheRef = useRef<Map<string, PracticeProblem>>(new Map());
@@ -147,6 +149,13 @@ export default function App() {
     if (!problem || !atlas) return null;
     return renderReasoningWithTiles(problem.reasoning, atlas);
   }, [problem?.id, problem?.reasoning, atlas]);
+
+  const progressStats = useMemo(() => {
+    const allTitles = Object.values(titlesByCategory).flat();
+    const total = allTitles.length;
+    const done = allTitles.filter((t) => doneProblemIds.has(t.id)).length;
+    return { total, done };
+  }, [titlesByCategory, doneProblemIds]);
 
   const fetchProblemByFile = useCallback(async (file: string): Promise<PracticeProblem> => {
     const cached = problemCacheRef.current.get(file);
@@ -261,8 +270,8 @@ export default function App() {
     if (idx < 0) return;
     const prev = list[(idx - 1 + list.length) % list.length];
     const next = list[(idx + 1) % list.length];
-    if (prev && !problemCacheRef.current.has(prev.file)) fetchProblemByFile(prev.file).catch(() => {});
-    if (next && !problemCacheRef.current.has(next.file)) fetchProblemByFile(next.file).catch(() => {});
+    if (prev && !problemCacheRef.current.has(prev.file)) fetchProblemByFile(prev.file).catch(() => { });
+    if (next && !problemCacheRef.current.has(next.file)) fetchProblemByFile(next.file).catch(() => { });
   }, [problem?.id, selectedCategoryId, selectedProblemId, titlesByCategory, fetchProblemByFile]);
 
   useEffect(() => {
@@ -340,14 +349,16 @@ export default function App() {
                     <div className="menu-titles">
                       {titles.map((t) => {
                         const isActive = view === "practice" && selectedProblemId === t.id;
+                        const isDone = doneProblemIds.has(t.id);
                         return (
                           <button
                             key={t.id}
                             ref={isActive ? (el) => { activeTitleRef.current = el; } : undefined}
-                            className={`menu-title-btn ${isActive ? "active" : ""}`}
+                            className={`menu-title-btn ${isActive ? "active" : ""} ${isDone && !isActive ? "done" : ""}`}
                             onClick={() => selectTitle(c.id, t)}
                           >
                             {t.title}
+                            {isDone && <span className="menu-title-done">✓</span>}
                           </button>
                         );
                       })}
@@ -373,6 +384,20 @@ export default function App() {
                   {" "}
                   <a href="https://github.com/mj3622/nani-kiru" target="_blank" rel="noopener noreferrer">GitHub · mj3622/nani-kiru</a>
                 </p>
+                {progressStats.total > 0 && (
+                  <div className="home-progress">
+                    <div className="home-progress-label">
+                      <span>做题进度</span>
+                      <span className="home-progress-count">{progressStats.done} / {progressStats.total} 题</span>
+                    </div>
+                    <div className="progress-bar-wrap">
+                      <div
+                        className="progress-bar-fill"
+                        style={{ width: `${Math.round((progressStats.done / progressStats.total) * 100)}%` }}
+                      />
+                    </div>
+                  </div>
+                )}
                 <div className="home-hero-actions">
                   <button className="btn" onClick={() => startPractice()}>
                     开始练习
@@ -434,123 +459,129 @@ export default function App() {
 
           {view === "practice" && problem && (
             <div className={`sheet ${isPending ? "sheet-pending" : ""}`}>
-            <div className="sheet-title">
-              <span className="title-category">{problem.category}</span>
-              <span className="title-sep">&gt;</span>
-              <span className="title-name">{problem.title}</span>
-            </div>
-
-            <div className="sheet-top">
-              <div className="round-strip">
-                <span className="round-bracket">{"["}</span>
-                <span>{problem.roundLabel}</span>
-                <span>{seatWindLabel(problem.seatWind)}家</span>
-                <span>{problem.turn}巡目</span>
-                <span className="round-bracket">{"]"}</span>
+              <div className="sheet-title">
+                <span className="title-category">{problem.category}</span>
+                <span className="title-sep">&gt;</span>
+                <span className="title-name">{problem.title}</span>
               </div>
-              <div className="dora-inline">
-                <div className="dora-wall">
-                  <Tile code="back" atlas={atlas} scale={0.28} />
-                  <Tile code="back" atlas={atlas} scale={0.28} />
+
+              <div className="sheet-top">
+                <div className="round-strip">
+                  <span className="round-bracket">{"["}</span>
+                  <span>{problem.roundLabel}</span>
+                  <span>{seatWindLabel(problem.seatWind)}家</span>
+                  <span>{problem.turn}巡目</span>
+                  <span className="round-bracket">{"]"}</span>
                 </div>
-                <div className="dora-center">
-                  <Tile code={problem.dora[0] ?? "back"} atlas={atlas} scale={0.28} />
-                </div>
-                <div className="dora-wall">
-                  <Tile code="back" atlas={atlas} scale={0.28} />
-                  <Tile code="back" atlas={atlas} scale={0.28} />
-                  <Tile code="back" atlas={atlas} scale={0.28} />
-                  <Tile code="back" atlas={atlas} scale={0.28} />
+                <div className="dora-inline">
+                  <div className="dora-wall">
+                    <Tile code="back" atlas={atlas} scale={0.28} />
+                    <Tile code="back" atlas={atlas} scale={0.28} />
+                  </div>
+                  <div className="dora-center">
+                    <Tile code={problem.dora[0] ?? "back"} atlas={atlas} scale={0.28} />
+                  </div>
+                  <div className="dora-wall">
+                    <Tile code="back" atlas={atlas} scale={0.28} />
+                    <Tile code="back" atlas={atlas} scale={0.28} />
+                    <Tile code="back" atlas={atlas} scale={0.28} />
+                    <Tile code="back" atlas={atlas} scale={0.28} />
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="hand-line">
-              <TileRow tiles={problem.handTiles} atlas={atlas} scale={0.62} compact />
-            </div>
+              <div className="hand-line">
+                <TileRow tiles={problem.handTiles} atlas={atlas} scale={0.62} compact />
+              </div>
 
-            <div className="actions">
-              <button
-                className="btn btn-secondary"
-                onClick={() => navigateProblem(-1)}
-                disabled={switchingProblem || loadingProblem || !selectedCategoryId}
-              >
-                上一题
-              </button>
-              <button
-                className="btn"
-                onClick={() => {
-                  setShowAnalysis((v) => !v);
-                  if (showAnalysis) setShowOriginalQuestion(false);
-                }}
-              >
-                {showAnalysis ? "隐藏解析" : "查看解析"}
-              </button>
-              {selectedCategoryId === "what-to-discard-300" && showAnalysis && (
+              <div className="actions">
                 <button
-                  type="button"
                   className="btn btn-secondary"
-                  onClick={() => setShowOriginalQuestion((v) => !v)}
+                  onClick={() => navigateProblem(-1)}
+                  disabled={switchingProblem || loadingProblem || !selectedCategoryId}
                 >
-                  {showOriginalQuestion ? "隐藏原题" : "查看原题"}
+                  上一题
                 </button>
-              )}
-              <button
-                className="btn btn-secondary"
-                onClick={() => navigateProblem(1)}
-                disabled={switchingProblem || loadingProblem || !selectedCategoryId}
-              >
-                {switchingProblem ? "加载中..." : "下一题"}
-              </button>
-            </div>
-
-            {showAnalysis && (
-              <div className="analysis">
-                <div className="analysis-summary-row">
-                  <div className="discard-target">
-                    <span className="discard-arrow">▶</span>
-                    <Tile code={problem.answerDiscard} atlas={atlas} scale={0.5} />
-                  </div>
-                  <div className="analysis-right">
-                    <span className="shanten-pill">{problem.shanten}向听</span>
-                    <div className="eff-list">
-                      {Object.entries(problem.tileEfficiency).map(([code, value]) => {
-                        if (!isTileCode(code)) return null;
-                        return (
-                          <div key={code} className="eff-item">
-                            <Tile code={code} atlas={atlas} scale={0.45} />
-                            <span className="eff-value">{value}</span>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
-                <div className="analysis-reason-row">
-                  <div className="reasoning">{reasoningContent}</div>
-                </div>
-                {selectedCategoryId === "what-to-discard-300" && showOriginalQuestion && (
-                  <div className="analysis-original">
-                    <div className="analysis-original-label">原题（书中图示）</div>
-                    <div className="analysis-original-figure">
-                      <img
-                        src={basePath(`/data/categories/what-to-discard-300/questions/${problem.title}.webp`)}
-                        alt={`原题 ${problem.title}`}
-                        loading="lazy"
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).style.display = "none";
-                          const fallback = (e.target as HTMLImageElement).nextElementSibling;
-                          if (fallback) (fallback as HTMLElement).style.display = "block";
-                        }}
-                      />
-                      <span className="analysis-original-fallback" style={{ display: "none" }}>
-                        暂无原题图
-                      </span>
-                    </div>
-                  </div>
+                <button
+                  className="btn"
+                  onClick={() => {
+                    const nextShow = !showAnalysis;
+                    setShowAnalysis(nextShow);
+                    if (!nextShow) {
+                      setShowOriginalQuestion(false);
+                    } else if (problem && !doneProblemIds.has(problem.id)) {
+                      markDone(problem.id);
+                      setDoneProblemIds(loadProgress());
+                    }
+                  }}
+                >
+                  {showAnalysis ? "隐藏解析" : "查看解析"}
+                </button>
+                {selectedCategoryId === "what-to-discard-300" && showAnalysis && (
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    onClick={() => setShowOriginalQuestion((v) => !v)}
+                  >
+                    {showOriginalQuestion ? "隐藏原题" : "查看原题"}
+                  </button>
                 )}
+                <button
+                  className="btn btn-secondary"
+                  onClick={() => navigateProblem(1)}
+                  disabled={switchingProblem || loadingProblem || !selectedCategoryId}
+                >
+                  {switchingProblem ? "加载中..." : "下一题"}
+                </button>
               </div>
-            )}
+
+              {showAnalysis && (
+                <div className="analysis">
+                  <div className="analysis-summary-row">
+                    <div className="discard-target">
+                      <span className="discard-arrow">▶</span>
+                      <Tile code={problem.answerDiscard} atlas={atlas} scale={0.5} />
+                    </div>
+                    <div className="analysis-right">
+                      <span className="shanten-pill">{problem.shanten}向听</span>
+                      <div className="eff-list">
+                        {Object.entries(problem.tileEfficiency).map(([code, value]) => {
+                          if (!isTileCode(code)) return null;
+                          return (
+                            <div key={code} className="eff-item">
+                              <Tile code={code} atlas={atlas} scale={0.45} />
+                              <span className="eff-value">{value}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="analysis-reason-row">
+                    <div className="reasoning">{reasoningContent}</div>
+                  </div>
+                  {selectedCategoryId === "what-to-discard-300" && showOriginalQuestion && (
+                    <div className="analysis-original">
+                      <div className="analysis-original-label">原题（书中图示）</div>
+                      <div className="analysis-original-figure">
+                        <img
+                          src={basePath(`/data/categories/what-to-discard-300/questions/${problem.title}.webp`)}
+                          alt={`原题 ${problem.title}`}
+                          loading="lazy"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).style.display = "none";
+                            const fallback = (e.target as HTMLImageElement).nextElementSibling;
+                            if (fallback) (fallback as HTMLElement).style.display = "block";
+                          }}
+                        />
+                        <span className="analysis-original-fallback" style={{ display: "none" }}>
+                          暂无原题图
+                        </span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           )}
         </main>

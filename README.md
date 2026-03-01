@@ -2,6 +2,8 @@
 
 **日麻切牌练习（何切る Web）** — 面向实战的日本麻将「何切る」在线练习，提供分类题库、逐题解析与牌效信息，帮助提升中盘切牌判断质量。
 
+**在线体验**：[https://nani-kiru.minjer.top/](https://nani-kiru.minjer.top/)
+
 ### 界面预览
 
 ![首页与练习界面](public/assets/home.png)
